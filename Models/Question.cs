@@ -7,7 +7,7 @@ namespace QuizGame;
 
         public int Id { get; set; }
         public string Text { get; set; } = string.Empty;
-        public string Type { get; set; }
+        public QuestionType Type { get; set; }
         public List<string> Options { get; set; }
         public int CorrectAnswer { get; set; }
 

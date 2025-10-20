@@ -64,33 +64,29 @@ public class Game
         //show score.x
     }
 
-    private void LoadQuestions()
-    {
-        var questionFile = Directory.GetFiles(_dataDirectory, "*.json");
-        var fileContent = File.ReadAllText(questionFile[0]);
-        var questionsArray = JsonNode.Parse(fileContent)!.AsArray();
-        foreach (var node in questionsArray)
+        private void LoadQuestions()
         {
-            Question question;
-            string type = node["Type"]!.ToString();
-            if (type == "MultipleChoice")
+            var questionFile = Directory.GetFiles(_dataDirectory, "*.json");
+            var fileContent = File.ReadAllText(questionFile[0]);
+            var questionsArray = JsonNode.Parse(fileContent)!.AsArray();
+            foreach (var node in questionsArray)
             {
-                question = new MultipleChoice();
+                Question question;
+                QuestionType type = Enum.Parse<QuestionType>(node["Type"]!.ToString());
+                question = type switch
+                {
+                    QuestionType.MultipleChoice => new MultipleChoice(),
+                    QuestionType.TrueFalse => new TrueFalse(),
+                    _ => throw new Exception($"Unknow type {type}")
+                };
+                question.Type = type;
+                question.Id = int.Parse(node["Id"]!.ToString());
+                question.Text = node["Text"]!.ToString();   
+                question.Options = node["Options"]!.AsArray().Select(x => x.ToString()).ToList();
+                question.CorrectAnswer = int.Parse(node["CorrectAnswer"]!.ToString()!);
+                _questions.Add(question);
+                
             }
-            else if (type == "TrueFalse")
-            {
-                question = new TrueFalse();
-            }
-            else
-            {
-                throw new Exception($"Unknow type {type}");
-            }
-            question.Id = int.Parse(node["Id"]!.ToString());
-            question.Text = node["Text"]!.ToString();
-            question.Options = node["Options"]!.AsArray().Select(x => x.ToString()).ToList();
-            question.CorrectAnswer = int.Parse(node["CorrectAnswer"]!.ToString()!);
-            _questions.Add(question);
-        }
 
+        }
     }
-}
