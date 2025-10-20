@@ -1,0 +1,54 @@
+[
+  
+  {
+    "Id": 1,
+    "Type": "MultipleChoice",
+    "Text": "Would you rather have to sing everything you say or dance everywhere you go?",
+    "Options": ["Sing everything", "Dance everywhere"],
+    "CorrectAnswer": 0
+  },
+  {
+    "Id": 2,
+    "Type": "TrueFalse",
+    "Text": "Penguins can fly.",
+    "Options": ["True", "False"],
+    "CorrectAnswer": 1
+  },
+  {
+    "Id": 3,
+    "Type": "TrueFalse",
+    "Text": "Bananas grow on trees.",
+    "Options": ["True", "False"],
+    "CorrectAnswer": 1
+  },
+  {
+    "Id": 4,
+    "Type": "MultipleChoice",
+    "Text": "If you could replace all grass in the world with something else, what would it be?",
+    "Options": ["Carpet", "Lego", "Marshmallows", "Bubble wrap"],
+    "CorrectAnswer": 3
+  },
+  {
+    "Id": 5,
+    "Type": "MultipleChoice",
+    "Text": "If your pet could text you, what would it probably say most often?",
+    "Options": ["Feed me", "Go away", "Let’s go outside", "Delete your search history"],
+    "CorrectAnswer": 0
+  },
+ 
+  {
+    "Id": 6,
+    "Type": "TrueFalse",
+    "Text": "There are more stars in the universe than grains of sand on Earth.",
+    "Options": ["True", "False"],
+    "CorrectAnswer": 0
+  },
+  {
+    "Id": 7,
+    "Type": "MultipleChoice",
+    "Text": "If you were a fruit, what fruit would you be?",
+    "Options": ["Pineapple", "Banana", "Watermelon", "Mango"],
+    "CorrectAnswer": 2
+  }
+  
+]

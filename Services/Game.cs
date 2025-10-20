@@ -1,0 +1,60 @@
+﻿
+using System.Reflection;
+using System.Text.Json;
+
+namespace QuizGame;
+
+public class Game
+{
+
+    public List<Question> _questions = new List<Question>();
+    public Player player;
+    private string _dataDirectory;
+    private string getAssemblyDirectory()
+    {
+        string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+
+        // Go up 3 levels: bin → Debug → netX.X ->
+        var solutionRoot = Directory.GetParent(assemblyDir)!.Parent!.Parent!.FullName;
+
+        return solutionRoot;
+    }
+    public Game(string directoryPath)
+    {
+        var dataDirectory = Path.Combine(getAssemblyDirectory(), directoryPath);
+        if (!Directory.Exists(dataDirectory))
+        {
+            throw new Exception($"Could not find '{dataDirectory}'");
+        }
+
+        _dataDirectory = dataDirectory;
+        player = new Player();
+
+    }
+    
+    
+    public void Start()
+    {
+        // load all questions
+        LoadQuestions();
+        //run quiz loop
+        foreach (var question in _questions)
+        {
+            var userAnswer = question.Ask();
+            if(question.CheckAnswer(userAnswer))
+            {
+                player.AddScore();      
+            }
+        }
+        Console.WriteLine($"\nyour score is {player.Score} out of {_questions.Count} \n");
+        //show score.x
+    }
+
+    private void LoadQuestions()
+    {
+        var questionFile = Directory.GetFiles(_dataDirectory, "*.json");
+        var fileContent = File.ReadAllText(questionFile[0]);
+        _questions = JsonSerializer.Deserialize<List<Question>>(fileContent);
+
+    }
+}
