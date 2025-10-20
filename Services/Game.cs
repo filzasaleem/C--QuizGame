@@ -40,6 +40,9 @@ public class Game
         // load all questions
         LoadQuestions();
         //run quiz loop
+        var random = new Random();
+        _questions = _questions.OrderBy(q => random.Next()).ToList();
+        
         foreach (var question in _questions)
         {
             var userAnswer = question.Ask();
