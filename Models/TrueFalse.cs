@@ -7,7 +7,7 @@ public class TrueFalse : Question
             Console.WriteLine($"{Text} \n");
             for (int i = 0; i < Options.Count; i++)
             {
-                Console.WriteLine($"{i + 1}: {Options[i]} \n");
+                Console.WriteLine($"{i}: {Options[i]} \n");
             }
             int userAnswer;
             while (true)

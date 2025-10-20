@@ -11,14 +11,14 @@
     "Id": 2,
     "Type": "TrueFalse",
     "Text": "Penguins can fly.",
-    "Options": ["True", "False"],
+    "Options": ["False","True" ],
     "CorrectAnswer": 1
   },
   {
     "Id": 3,
     "Type": "TrueFalse",
     "Text": "Bananas grow on trees.",
-    "Options": ["True", "False"],
+    "Options": ["False","True" ],
     "CorrectAnswer": 1
   },
   {
@@ -40,7 +40,7 @@
     "Id": 6,
     "Type": "TrueFalse",
     "Text": "There are more stars in the universe than grains of sand on Earth.",
-    "Options": ["True", "False"],
+    "Options": ["False","True" ],
     "CorrectAnswer": 0
   },
   {

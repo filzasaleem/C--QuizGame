@@ -55,6 +55,26 @@ public class Game
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Wrong! Correct answer: {question.Options[question.CorrectAnswer]}\n");
                 Console.ResetColor();
+               while (player.Chances > 0)
+                {
+                    Console.WriteLine($"You have {player.Chances} chance(s) left. Try again:");
+                    int retryAnswer = question.Ask();
+                    if (question.CheckAnswer(retryAnswer))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"Correct! Well done, {player.Name}!");
+                        Console.ResetColor();
+                        player.AddScore();
+                        break; 
+                    }
+                    else
+                    {
+                        player.UpdateChanes();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Wrong again!");
+                        Console.ResetColor();
+                    }
+                }
 
             }
         }
