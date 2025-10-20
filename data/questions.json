@@ -5,7 +5,7 @@
     "Type": "MultipleChoice",
     "Text": "Would you rather have to sing everything you say or dance everywhere you go?",
     "Options": ["Sing everything", "Dance everywhere"],
-    "CorrectAnswer": 0
+    "CorrectAnswer": 1
   },
   {
     "Id": 2,
@@ -33,7 +33,7 @@
     "Type": "MultipleChoice",
     "Text": "If your pet could text you, what would it probably say most often?",
     "Options": ["Feed me", "Go away", "Let’s go outside", "Delete your search history"],
-    "CorrectAnswer": 0
+    "CorrectAnswer": 1
   },
  
   {
