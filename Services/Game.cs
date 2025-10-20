@@ -29,13 +29,14 @@ public class Game
         }
 
         _dataDirectory = dataDirectory;
-        player = new Player();
-
+        
+         player = new Player();
     }
     
     
-    public void Start()
+    public void Start(string name)
     {
+        player.Name = name;
         // load all questions
         LoadQuestions();
         //run quiz loop
@@ -45,14 +46,21 @@ public class Game
             if (question.CheckAnswer(userAnswer))
             {
                 player.AddScore();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Good Job {player.Name}. You are so smart!!!");
+                Console.ResetColor();
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Wrong! Correct answer: {question.Options[question.CorrectAnswer]}\n");
+                Console.ResetColor();
 
             }
         }
-        Console.WriteLine($"\nyour score is {player.Score} out of {_questions.Count} \n");
+        // Console.BackgroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"your score is {player.Score} out of {_questions.Count} \n");
+        // Console.ResetColor();
         //show score.x
     }
 
@@ -60,7 +68,6 @@ public class Game
     {
         var questionFile = Directory.GetFiles(_dataDirectory, "*.json");
         var fileContent = File.ReadAllText(questionFile[0]);
-        // _questions = JsonSerializer.Deserialize<List<Question>>(fileContent);
         var questionsArray = JsonNode.Parse(fileContent)!.AsArray();
         foreach (var node in questionsArray)
         {
