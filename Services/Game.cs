@@ -8,7 +8,8 @@ namespace QuizGame;
 public class Game
 {
 
-    public List<Question> _questions = new List<Question>();
+
+    private List<Question> _questions = new List<Question>();
     public Player player;
     private string _dataDirectory;
     private string getAssemblyDirectory()
